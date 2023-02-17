@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+
+import Image from './components/Image';
+import Hero from './components/Hero'
+import Imagehero from './components/imagehero';
+import Footer from './components/Footer';
+import data from './data'
+// console.log(data)
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   const footer=data.map(item=>{
+    return(
+        <Footer
+        key={item.id}
+        img={item.coverImg}
+        rate={item.stats.rating}
+        rate1={item.stats.reviewCount}
+        country={item.location}
+        desc={item.description}
+        title={item.title}
+        price={item.price}
+        openSports={item.openSpots}
+        />
+    );
+   })
+    
+           
+    return (
+        <div>
+            <Image />
+            <Imagehero/>
+            <Hero />  
+            {footer}
+        </div>
+    );
 }
-
-export default App;
+export default App
